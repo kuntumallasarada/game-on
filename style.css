@@ -1,0 +1,48 @@
+div{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: normal;
+    font-size: 60px;
+ }
+
+ img {
+    width: 50%;
+    border-radius: 1em;
+}
+
+.img1{
+    width:10%;
+    border-radius: 1em;
+}
+button {
+    border: none;
+    color: brown;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: darksalmon;
+  }
+
+  /* Score Board */
+.score{
+    display: flex;
+    width: 30vw;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 400px;
+    z-index: 1;
+    text-align: center;
+}
+
+.container{
+    height: 90vh;
+  margin: 2rem;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr;
+
+}
+  
