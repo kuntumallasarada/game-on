@@ -106,6 +106,7 @@ for (let i = cardArray.length -1; i > 0; i--) {
          var card = document.createElement('img');
          card.setAttribute('src','images/fairy.png');
          card.setAttribute('data-id',i);
+         card.id =i
          container.appendChild(card);    
      
      if(diceCount==1){
@@ -134,28 +135,35 @@ for (let i = cardArray.length -1; i > 0; i--) {
     let cards = document.querySelectorAll('img');
     let optionOneId = cardsChosenId[0];
     let optionTwoId = cardsChosenId[1];
+    let one = parseInt(optionOneId)+1;
+    let two = parseInt(optionTwoId)+1;
+
     if(cardsChosen[0]===cardsChosen[1]){
        cardsWonPlayer.push(cardsChosen);
     }
     else {      
-       let one = parseInt(optionOneId)+1;
-       let two = parseInt(optionTwoId)+1;
-
          cards[one].setAttribute('src','images/fairy.png');
          cards[two].setAttribute('src','images/fairy.png');
+         alert("It's computer's turn to play");
     }
     cardsChosen = [];
     cardsChosenId = [];
+    console.log(cardsWonPlayer)
+  }
+  function compCards(){
+        const choiceNumber = Math.floor(Math.random()*12);
+        let  cardId = document.getElementById(choiceNumber.toString());
+         computerChosen.push(cardArray[choiceNumber].name);
+        computerChosenId.push(choiceNumber);
+       cardId.src = cardArray[choiceNumber].img
   }
 
   //Computer playing
   function flipcardComp(){
-  for(i=0;i<2;i++){
-    const choiceNumber = Math.floor(Math.random()*12)
-     computerChosen.push(cardArray[choiceNumber].name);
-    computerChosenId.push(choiceNumber);
-  }
-  setTimeout(checkForMatchComp(),1500);
+      for(i=0;i<2;i++){
+            compCards();
+      }
+  setTimeout(checkForMatchComp,2000);
 }
 
   //Check for Matches --- Computer Playing

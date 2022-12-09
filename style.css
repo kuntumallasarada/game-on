@@ -1,7 +1,7 @@
 div{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-style: normal;
-    font-size: 60px;
+    font-size: 40px;
  }
 
  img {
@@ -41,7 +41,7 @@ button {
     height: 90vh;
     align-content: center;
   margin: 2rem;
-   display: grid;
+   display: flexbox;
    grid-template-columns: 1fr 1fr 1fr 1fr;
    grid-template-rows: 1fr 1fr 1fr;
 
