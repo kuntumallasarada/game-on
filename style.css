@@ -39,6 +39,7 @@ button {
 
 .container{
     height: 90vh;
+    align-content: center;
   margin: 2rem;
    display: grid;
    grid-template-columns: 1fr 1fr 1fr 1fr;

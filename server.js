@@ -1,3 +1,4 @@
+
 class player{
     constructor(name,dice){
        this.name = name;
@@ -6,26 +7,30 @@ class player{
 }
 let player1 = new player("Leo",0);
 let player2 = new player("Computer",0) 
-
+let diceCount=0;
 // Roll a dice function
 const result=document.querySelector('.diceresult');
-const rollDice = ()=>{
+function rollDice(){
     player1.dice = Math.floor(Math.random()*6)+1;
     player2.dice = Math.floor(Math.random()*6)+1;
 
     if(player1.dice>player2.dice)
     {
-      result.textContent="You won the dice and will be the first to play";  
+      result.textContent="You won the dice and will be the first to play"; 
+      diceCount = 1;
+      createBoard();
     }
     else{
         result.textContent="Computer won the dice and will be the first to play";
+        diceCount = 2;
+        createBoard();
     }
-
+    
 }
 
 
-// making the grid 
-document.addEventListener('DOMContentLoaded',() => {
+//document.addEventListener('DOMContentLoaded',() => {
+
     //memory cards
     const cardArray = [
      {
@@ -86,32 +91,31 @@ for (let i = cardArray.length -1; i > 0; i--) {
   cardArray[i] = cardArray[j];
   cardArray[j] = k;
 }
-  
- 
+    //declarations
   const container = document.querySelector('.container');
   cardsChosen = [];
   cardsChosenId = [];
-  cardsWon = [];
+  computerChosen = [];
+  computerChosenId = [];
+  cardsWonPlayer = [];
+  cardsWonComp = [];
+
   //create your board
   function createBoard(){
      for(let i=0;i<cardArray.length;i++){
          var card = document.createElement('img');
          card.setAttribute('src','images/fairy.png');
          card.setAttribute('data-id',i);
-         card.addEventListener('click',flipCard);
-         container.appendChild(card);
-     }
+         container.appendChild(card);    
+     
+     if(diceCount==1){
+        card.addEventListener('click',flipCard);
+        }
+         if(diceCount==2 && i==11){
+             flipcardComp();
+          }
+        }
   }
-
-  //Check for Matches
-//   function checkForMatch(){
-//     var cards = document.querySelectorAll('img');
-//     const optionOneId = cardsChosenId[0];
-//     const optionTwoId = cardsChosenId[1];
-//     if(cardsChosen[0]===cardsChosen[1]){
-//         cards[optionOneId].setAttribute('src',cardArray[])
-//     }
-//   }
 
   //flipCard function
 
@@ -120,11 +124,62 @@ for (let i = cardArray.length -1; i > 0; i--) {
     cardsChosen.push(cardArray[cardId].name);
     cardsChosenId.push(cardId);
     this.setAttribute('src',cardArray[cardId].img);
-    // if(cardsChosen.length === 2){
-    //     setTimeout(checkForMatch, 500);
-    // }
+    if(cardsChosen.length == 2){
+        setTimeout(checkForMatch, 1500);    
+    }
   } 
 
-  createBoard();
+  //Check for Matches
+  function checkForMatch(){
+    let cards = document.querySelectorAll('img');
+    let optionOneId = cardsChosenId[0];
+    let optionTwoId = cardsChosenId[1];
+    if(cardsChosen[0]===cardsChosen[1]){
+       cardsWonPlayer.push(cardsChosen);
+    }
+    else {      
+       let one = parseInt(optionOneId)+1;
+       let two = parseInt(optionTwoId)+1;
+
+         cards[one].setAttribute('src','images/fairy.png');
+         cards[two].setAttribute('src','images/fairy.png');
+    }
+    cardsChosen = [];
+    cardsChosenId = [];
+  }
+
+  //Computer playing
+  function flipcardComp(){
+  for(i=0;i<2;i++){
+    const choiceNumber = Math.floor(Math.random()*12)
+     computerChosen.push(cardArray[choiceNumber].name);
+    computerChosenId.push(choiceNumber);
+  }
+  setTimeout(checkForMatchComp(),1500);
+}
+
+  //Check for Matches --- Computer Playing
+  function checkForMatchComp(){
+    let cards = document.querySelectorAll('img');
+    let optionOneId = computerChosenId[0];
+    let optionTwoId = computerChosenId[1];
+    let one = parseInt(optionOneId)+1;
+    let two = parseInt(optionTwoId)+1;
+  
+    if(computerChosen[0]===computerChosen[1]){
+        cards[one].setAttribute('src',cardArray[optionOneId].img);
+        cards[two].setAttribute('src',cardArray[optionTwoId].img);
+        cardsWonComp.push(computerChosen);
+    }
+    else {   
+      
+         cards[one].setAttribute('src','images/fairy.png');
+         cards[two].setAttribute('src','images/fairy.png');
+    }
+    computerChosen = [];
+    computerChosenId = [];
+  }
+
  
- })
+ 
+//  })
