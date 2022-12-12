@@ -1,3 +1,26 @@
+
+body{
+    background-image: url('images/fairybackground.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  background-size: cover;
+}
+h1{
+    text-align: center;
+    font-size: 40px;
+}
+h2{
+    text-align: center;
+    font-size: 30px;
+}
+p{
+    font-size: 16px;
+    width:60%;
+    border: 2px solid black;
+    height: 150px;
+ }
+    
+
 div{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-style: normal;
@@ -5,7 +28,8 @@ div{
  }
 
  img {
-    width: 50%;
+    height:200px;
+    width:300px;
     border-radius: 1em;
 }
 
@@ -13,6 +37,18 @@ div{
     width:10%;
     border-radius: 1em;
 }
+
+.img2{
+    height:200px;
+    width:300px;
+        
+        float: left;  
+    
+}
+.roll{
+    justify-content: center;
+}
+
 button {
     border: none;
     color: brown;
@@ -32,18 +68,39 @@ button {
     width: 30vw;
     justify-content: space-evenly;
     position: absolute;
-    top: 400px;
+    top: 500px;
     z-index: 1;
     text-align: center;
 }
 
-.container{
-    height: 90vh;
-    align-content: center;
-  margin: 2rem;
-   display: flexbox;
-   grid-template-columns: 1fr 1fr 1fr 1fr;
-   grid-template-rows: 1fr 1fr 1fr;
 
+/* Reload button style */
+.reload {
+    display: flex;
+    margin-top: 5rem;
+    padding: 1rem;
+    background: coral;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px 5px;
+}
+
+.container{
+    height: 450px;
+    align-content: center;
+    margin: 2rem;
+   display: grid;
+   grid-template-columns:300px 300px 300px 300px;
+   gap:10px;
+   padding:10px;
+   grid-template-rows: 250px 250px 250px;
+   justify-content: end;
 }
   
+.gameresult{
+    margin-top: 20px;
+    font-size: 30px ;
+    
+}
