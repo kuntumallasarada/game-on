@@ -41,8 +41,7 @@ div{
 .img2{
     height:200px;
     width:300px;
-        
-        float: left;  
+ float: left;  
     
 }
 .roll{
@@ -88,7 +87,7 @@ button {
 }
 
 .container{
-    height: 450px;
+    height: 350px;
     align-content: center;
     margin: 2rem;
    display: grid;

@@ -1,4 +1,5 @@
 # game-on
+My project - Memory Game against Computer
 ![My Image](C:\Users\kuntu\Downloads\IMG_3537.jpg)
 Technologies Used: HTML, CSS and JavaScript.
 DOM is used to see the results.
